@@ -575,14 +575,50 @@ namespace HeneGames.Airplane
         {
             //Invoke action
             crashAction?.Invoke();
+            // Mark plane as dead
+            planeIsDead = true;
 
-            //Set rigidbody to non cinematic
-            rb.isKinematic = false;
-            rb.useGravity = true;
-            rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            //// Stop physics completely
+            //rb.velocity = Vector3.zero;
+            //rb.angularVelocity = Vector3.zero;
+            //rb.isKinematic = true; // freeze plane
+            //rb.useGravity = false;  // prevent falling
 
-            //Add last speed to rb
-            rb.AddForce(transform.forward * lastEngineSpeed, ForceMode.VelocityChange);
+            ////Set all colliders to normal
+            //for (int i = 0; i < airPlaneColliders.Count; i++)
+            //{
+            //    if (airPlaneColliders[i] != null)
+            //    {
+            //        var col = airPlaneColliders[i].GetComponent<Collider>();
+            //        if (col != null)
+            //            col.isTrigger = false;
+
+            //        var rbody = airPlaneColliders[i].GetComponent<Rigidbody>();
+            //        if (rbody != null)
+            //            Destroy(rbody);
+            //    }
+            //}
+
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.useGravity = false;
+
+            // Reset colliders safely
+            for (int i = 0; i < airPlaneColliders.Count; i++)
+            {
+                if (airPlaneColliders[i] != null)
+                {
+                    var col = airPlaneColliders[i].GetComponent<Collider>();
+                    if (col != null)
+                        col.isTrigger = false;
+
+                    var rbody = airPlaneColliders[i].GetComponent<Rigidbody>();
+                    if (rbody != null)
+                        Destroy(rbody);
+                }
+            }
+
 
             //Change every collider trigger state and remove rigidbodys
             for (int i = 0; i < airPlaneColliders.Count; i++)
@@ -594,6 +630,33 @@ namespace HeneGames.Airplane
             //Kill player
             planeIsDead = true;
         }
+        public void ResetPlane()
+        {
+            planeIsDead = false;
+
+            // Reset Rigidbody
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.useGravity = false;
+
+            // Reset colliders
+            foreach (var col in airPlaneColliders)
+            {
+                if (col != null)
+                {
+                    var colliderComp = col.GetComponent<Collider>();
+                    if (colliderComp != null)
+                        colliderComp.isTrigger = true;
+
+                    var rbComp = col.GetComponent<Rigidbody>();
+                    if (rbComp != null)
+                        Destroy(rbComp); // optional: recreate if needed
+                }
+            }
+        }
+
+
 
         #endregion
 
