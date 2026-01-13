@@ -578,33 +578,13 @@ namespace HeneGames.Airplane
             // Mark plane as dead
             planeIsDead = true;
 
-            //// Stop physics completely
-            //rb.velocity = Vector3.zero;
-            //rb.angularVelocity = Vector3.zero;
-            //rb.isKinematic = true; // freeze plane
-            //rb.useGravity = false;  // prevent falling
-
-            ////Set all colliders to normal
-            //for (int i = 0; i < airPlaneColliders.Count; i++)
-            //{
-            //    if (airPlaneColliders[i] != null)
-            //    {
-            //        var col = airPlaneColliders[i].GetComponent<Collider>();
-            //        if (col != null)
-            //            col.isTrigger = false;
-
-            //        var rbody = airPlaneColliders[i].GetComponent<Rigidbody>();
-            //        if (rbody != null)
-            //            Destroy(rbody);
-            //    }
-            //}
-
+            // Stop physics completely
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true;
-            rb.useGravity = false;
+            rb.isKinematic = true; // freeze plane
+            rb.useGravity = false;  // prevent falling
 
-            // Reset colliders safely
+            //Set all colliders to normal
             for (int i = 0; i < airPlaneColliders.Count; i++)
             {
                 if (airPlaneColliders[i] != null)
@@ -618,6 +598,26 @@ namespace HeneGames.Airplane
                         Destroy(rbody);
                 }
             }
+
+            //rb.velocity = Vector3.zero;
+            //rb.angularVelocity = Vector3.zero;
+            //rb.isKinematic = true;
+            //rb.useGravity = false;
+
+            //// Reset colliders safely
+            //for (int i = 0; i < airPlaneColliders.Count; i++)
+            //{
+            //    if (airPlaneColliders[i] != null)
+            //    {
+            //        var col = airPlaneColliders[i].GetComponent<Collider>();
+            //        if (col != null)
+            //            col.isTrigger = false;
+
+            //        var rbody = airPlaneColliders[i].GetComponent<Rigidbody>();
+            //        if (rbody != null)
+            //            Destroy(rbody);
+            //    }
+            //}
 
 
             //Change every collider trigger state and remove rigidbodys

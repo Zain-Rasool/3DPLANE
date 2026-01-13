@@ -15,19 +15,23 @@ public class PlaneCrash : MonoBehaviour
         {
             crashed = true;
 
-            // Explosion
+            // Play explosion
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-            // Crash plane
-            SimpleAirPlaneController controller = transform.parent.GetComponent<SimpleAirPlaneController>();
-            if (controller != null && !controller.PlaneIsDead())
+            // Tell controller to crash
+            SimpleAirPlaneController planeController = transform.parent.GetComponent<SimpleAirPlaneController>();
+            if (planeController != null && !planeController.PlaneIsDead())
             {
-                controller.Crash();
+                planeController.Crash(); // plane freeze and crash
             }
 
-            // Show Game Over
-            UiManager ui = FindObjectOfType<UiManager>();
-            if (ui != null) ui.ShowGameOver();
+            // Reload scene after 2 seconds
+            Invoke(nameof(ReloadScene), 2f);
         }
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
