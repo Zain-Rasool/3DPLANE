@@ -1,17 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MiniMapFollow : MonoBehaviour
 {
-    public Transform plane;
+    public Transform player;
 
     void LateUpdate()
     {
-        if (plane == null) return;
+        Vector3 newPosition = player.position;
+        newPosition.y = transform.position.y;
+        transform.position = newPosition;
 
-        transform.position = new Vector3(
-            plane.position.x,
-            transform.position.y,
-            plane.position.z
-        );
+        transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
     }
 }
