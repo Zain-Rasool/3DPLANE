@@ -39,6 +39,10 @@ namespace HeneGames.Airplane
 
         private void Update()
         {
+            // Freeze camera if mission completed
+            if (MissionManager.Instance != null && MissionManager.Instance.MissionCompleted)
+                return;
+
             CameraFovUpdate();
         }
 

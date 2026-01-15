@@ -14,17 +14,23 @@ namespace HeneGames.Airplane
 
         private void Update()
         {
-            if(runway.AirplaneIsLanding())
+            if (MissionManager.Instance != null && MissionManager.Instance.MissionCompleted)
+            {
+                uiContent.SetActive(false);
+                return;
+            }
+
+            if (runway.AirplaneIsLanding())
             {
                 uiContent.SetActive(true);
                 debugText.text = "Airplane is landing";
             }
-            else if(runway.AirplaneLandingCompleted())
+            else if (runway.AirplaneLandingCompleted())
             {
                 uiContent.SetActive(true);
                 debugText.text = "Press space to launch";
             }
-            else if(runway.AriplaneIsTakingOff())
+            else if (runway.AriplaneIsTakingOff())
             {
                 uiContent.SetActive(true);
                 debugText.text = "Airplane is taking off";
@@ -35,5 +41,6 @@ namespace HeneGames.Airplane
                 debugText.text = "";
             }
         }
+
     }
 }

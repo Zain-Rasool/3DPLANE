@@ -637,7 +637,7 @@ namespace HeneGames.Airplane
             // Reset Rigidbody
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true;
+            rb.isKinematic = false;  // plane fir se controllable
             rb.useGravity = false;
 
             // Reset colliders
@@ -655,6 +655,7 @@ namespace HeneGames.Airplane
                 }
             }
         }
+
 
 
 

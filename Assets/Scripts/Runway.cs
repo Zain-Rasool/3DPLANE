@@ -51,9 +51,12 @@ namespace HeneGames.Airplane
                     landingAdjuster.localPosition = Vector3.Lerp(landingAdjuster.localPosition, landingfinalPos.localPosition, landingSpeed * Time.deltaTime);
 
                     //Launch airplane
-                    if (Input.GetKeyDown(launchKey))
+                    if (!MissionManager.Instance.MissionCompleted) // <-- ADD THIS
                     {
-                        landingAirplaneController.airplaneState = SimpleAirPlaneController.AirplaneState.Takeoff;
+                        if (Input.GetKeyDown(launchKey))
+                        {
+                            landingAirplaneController.airplaneState = SimpleAirPlaneController.AirplaneState.Takeoff;
+                        }
                     }
 
                     //Reset runway if landing airplane is taking off
