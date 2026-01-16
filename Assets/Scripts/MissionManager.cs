@@ -10,8 +10,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private Runway[] runways; // Runway_A, Runway_B, ...
     private int currentLevel = 0;
 
-    [Header("UI")]
-    [SerializeField] private GameObject missionCompletePanel;
+
 
     private bool missionCompleted;
     public bool MissionCompleted
@@ -29,7 +28,7 @@ public class MissionManager : MonoBehaviour
 
     private void Start()
     {
-        missionCompletePanel.SetActive(false);
+        //missionCompletePanel.SetActive(false);
         missionCompleted = false;
 
 
@@ -53,12 +52,7 @@ public class MissionManager : MonoBehaviour
             CompleteLevel();
         }
 
-        // Keyboard Next Level
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Debug.Log("KEYBOARD NEXT LEVEL WORKING");
-            NextLevel();
-        }
+        
     }
 
 
@@ -67,9 +61,9 @@ public class MissionManager : MonoBehaviour
         missionCompleted = true;
         Debug.Log("LEVEL " + (currentLevel + 1) + " COMPLETED");
 
-        // Show panel
-        if (missionCompletePanel != null)
-            missionCompletePanel.SetActive(true);
+        //// Show panel
+        //if (missionCompletePanel != null)
+        //    missionCompletePanel.SetActive(true);
 
         // Freeze plane
         SimpleAirPlaneController plane = FindObjectOfType<SimpleAirPlaneController>();
@@ -85,19 +79,17 @@ public class MissionManager : MonoBehaviour
             cameraScript.enabled = false; // disable camera update
         }
 
-        // Optional: unlock cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+
+        UiManager.Instance.ShowMissionComplete();
+
     }
 
     public void NextLevel()
     {
-        Debug.Log("NEXT LEVEL BUTTON CLICKED");
+        
 
-        // Hide panel
-        if (missionCompletePanel != null)
-            missionCompletePanel.SetActive(false);
-
+        
+        
         // Reset plane
         SimpleAirPlaneController plane = FindObjectOfType<SimpleAirPlaneController>();
         if (plane != null)

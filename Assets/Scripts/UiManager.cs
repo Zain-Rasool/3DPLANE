@@ -1,86 +1,122 @@
-using HeneGames.Airplane;
+﻿using HeneGames.Airplane;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
-    //[Header("Panels")]
-    //public GameObject mainMenuPanel;
-    //public GameObject gameOverPanel;
+    public static UiManager Instance;
 
-    //[Header("Cameras")]
-    //public Camera mainMenuCamera;
-    //public Camera planeCamera;
+    [Header("Panels")]
+    public GameObject pausePanel;
+    public GameObject gameOverPanel;
+    public GameObject missionCompletePanel;
 
-    //private GameObject plane;
+    private bool isPaused = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
-        // Initial state
-        //mainMenuPanel.SetActive(true);
-        //gameOverPanel.SetActive(false);
+        pausePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        missionCompletePanel.SetActive(false);
 
-        //if (mainMenuCamera != null) mainMenuCamera.gameObject.SetActive(true);
-        //if (planeCamera != null) planeCamera.gameObject.SetActive(false);
-
-        //plane = GameObject.FindWithTag("Player");
-        //if (plane != null) plane.SetActive(false); // plane initially inactive
+        Time.timeScale = 1f;
     }
 
-    // Start button
-    public void StartGame()
+    private void Update()
     {
-        //mainMenuPanel.SetActive(false);
-        //gameOverPanel.SetActive(false);
+        // ESC Pause / Resume
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameOverPanel.activeSelf || missionCompletePanel.activeSelf)
+                return;
 
-        //// Switch cameras
-        //if (mainMenuCamera != null) mainMenuCamera.gameObject.SetActive(false);
-        //if (planeCamera != null) planeCamera.gameObject.SetActive(true);
-
-        //// Activate plane
-        //if (plane != null)
-        //{
-        //    plane.SetActive(true);
-        //    plane.transform.position = Vector3.zero;
-        //    plane.transform.rotation = Quaternion.identity;
-
-        //    SimpleAirPlaneController controller = plane.GetComponent<SimpleAirPlaneController>();
-        //    if (controller != null)
-        //    {
-        //        controller.ResetPlane(); // reset plane state
-        //    }
-        //}
+            if (!isPaused)
+                PauseGame();
+            else
+                ResumeGame();
+        }
     }
-
-    // Restart button
-    public void RestartGame()
+    public void GoToMainMenu()
     {
-        //Debug.Log("Restart clicked!");
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f; // IMPORTANT: resume time
+        SceneManager.LoadScene(0); // Main Menu scene
     }
 
-    // Home button
-    public void BackToMainMenu()
+
+    // ================= PAUSE =================
+    public void PauseGame()
     {
-        //Debug.Log("Home clicked!");
+        Debug.Log("GAME PAUSED");
 
-        //// Reset panels
-        //mainMenuPanel.SetActive(true);
-        //gameOverPanel.SetActive(false);
+        isPaused = true;
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
 
-        //// Camera switch
-        //if (mainMenuCamera != null) mainMenuCamera.gameObject.SetActive(true);
-        //if (planeCamera != null) planeCamera.gameObject.SetActive(false);
+        pausePanel.SetActive(true);
 
-        //// Hide plane
-        //if (plane != null)
-        //    plane.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
-    // Show Game Over panel
+    // ================= RESUME =================
+    public void ResumeGame()
+    {
+        
+
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        AudioListener.pause = false;
+
+        pausePanel.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    // ================= GAME OVER =================
     public void ShowGameOver()
     {
-        //gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    // ================= MISSION COMPLETE =================
+    public void ShowMissionComplete()
+    {
+        Time.timeScale = 0f;
+        missionCompletePanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    // ================= BUTTONS =================
+    public void RestartGame()
+    {
+
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLevel()
+    {
+        missionCompletePanel.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        MissionManager.Instance.NextLevel();
     }
 }

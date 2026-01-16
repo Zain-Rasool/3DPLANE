@@ -32,7 +32,7 @@ public class RunwayIdicator : MonoBehaviour
     {
         currentRunway = runway;
         icon.gameObject.SetActive(runway != null);
-        Debug.Log("RUNWAY SET: " + runway.name);
+        
     }
 
     void Update()

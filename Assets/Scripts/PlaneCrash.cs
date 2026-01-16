@@ -25,13 +25,12 @@ public class PlaneCrash : MonoBehaviour
                 planeController.Crash(); // plane freeze and crash
             }
 
-            // Reload scene after 2 seconds
-            Invoke(nameof(ReloadScene), 2f);
+            Invoke(nameof(ShowGameOver), 2f);
         }
     }
-
-    void ReloadScene()
+    void ShowGameOver()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UiManager.Instance.ShowGameOver();
     }
+
 }
