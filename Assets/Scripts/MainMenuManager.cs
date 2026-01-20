@@ -6,25 +6,58 @@ public class MainMenuManager : MonoBehaviour
     [Header("Panels")]
     public GameObject mainPanel;
     public GameObject modePanel;
+    public GameObject settingsPanel;
+    public GameObject exitPanel;
 
     private void Start()
     {
         mainPanel.SetActive(true);
         modePanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        exitPanel.SetActive(false);
     }
 
     // ---------- PLAY ----------
     public void PlayButton()
     {
-        mainPanel.SetActive(false);
+        HideAllPanels();
         modePanel.SetActive(true);
     }
 
     // ---------- BACK ----------
     public void BackButton()
     {
-        modePanel.SetActive(false);
+        HideAllPanels();
         mainPanel.SetActive(true);
+    }
+
+    // ---------- SETTINGS ----------
+    public void OpenSettings()
+    {
+        HideAllPanels();
+        settingsPanel.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        HideAllPanels();
+        mainPanel.SetActive(true);
+    }
+
+    // ---------- EXIT ----------
+    public void OpenExitPanel()
+    {
+        exitPanel.SetActive(true);
+    }
+
+    public void ExitYes()
+    {
+        Application.Quit();
+    }
+
+    public void ExitNo()
+    {
+        exitPanel.SetActive(false);
     }
 
     // ---------- FREE MODE ----------
@@ -43,9 +76,12 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    // ---------- QUIT ----------
-    public void QuitGame()
+    // ---------- UTIL ----------
+    void HideAllPanels()
     {
-        Application.Quit();
+        mainPanel.SetActive(false);
+        modePanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        exitPanel.SetActive(false);
     }
 }
