@@ -30,7 +30,7 @@ public class UiManager : MonoBehaviour
     private void Update()
     {
         // ESC Pause / Resume
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameOverPanel.activeSelf || missionCompletePanel.activeSelf)
                 return;
@@ -39,7 +39,7 @@ public class UiManager : MonoBehaviour
                 PauseGame();
             else
                 ResumeGame();
-        }
+        }*/
     }
     public void GoToMainMenu()
     {
@@ -53,14 +53,13 @@ public class UiManager : MonoBehaviour
     {
         Debug.Log("GAME PAUSED");
 
-        isPaused = true;
-        Time.timeScale = 0f;
+        //isPaused = true;
+
         AudioListener.pause = true;
 
         pausePanel.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        Time.timeScale = 0f;
     }
 
     // ================= RESUME =================
@@ -75,8 +74,8 @@ public class UiManager : MonoBehaviour
 
         pausePanel.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     // ================= GAME OVER =================
@@ -114,8 +113,8 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         MissionManager.Instance.NextLevel();
     }

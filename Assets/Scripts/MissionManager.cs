@@ -106,8 +106,8 @@ public class MissionManager : MonoBehaviour
         }
 
         // Cursor lock again
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         // Next level
         currentLevel++;

@@ -33,8 +33,8 @@ namespace HeneGames.Airplane
             brain = GetComponent<CinemachineBrain>();
 
             //Lock and hide mouse
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
         }
 
         private void Update()
