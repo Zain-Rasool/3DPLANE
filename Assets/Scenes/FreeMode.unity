@@ -548,7 +548,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 888228400}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: GoToMainMenu
         m_Mode: 1
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 888228400}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 888228400}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: PauseGame
         m_Mode: 1
@@ -1147,9 +1147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63920daa106db2d4a98d8af4ecc785a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UiManager
-  pausePanel: {fileID: 0}
-  gameOverPanel: {fileID: 0}
-  missionCompletePanel: {fileID: 0}
+  pausePanel: {fileID: 2078360466}
+  gameOverPanel: {fileID: 50517511}
+  missionCompletePanel: {fileID: 1066305710}
 --- !u!4 &888228401
 Transform:
   m_ObjectHideFlags: 0
@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 888228400}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: GoToMainMenu
         m_Mode: 1
@@ -1957,7 +1957,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 888228400}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 888228400}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
