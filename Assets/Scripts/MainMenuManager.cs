@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,12 @@ public class MainMenuManager : MonoBehaviour
     public GameObject modePanel;
     public GameObject settingsPanel;
     public GameObject exitPanel;
+    public GameObject freeModeEnvPanel;
+    public GameObject instructionPanel;
+
+    [Header("Free Mode Scenes")]
+    public int desertSceneIndex = 1;
+    public int forestSceneIndex = 2;
 
     private void Start()
     {
@@ -15,6 +22,8 @@ public class MainMenuManager : MonoBehaviour
         modePanel.SetActive(false);
         settingsPanel.SetActive(false);
         exitPanel.SetActive(false);
+        freeModeEnvPanel.SetActive(false);
+        instructionPanel.SetActive(false);
     }
 
     // ---------- PLAY ----------
@@ -47,6 +56,7 @@ public class MainMenuManager : MonoBehaviour
     // ---------- EXIT ----------
     public void OpenExitPanel()
     {
+        HideAllPanels();
         exitPanel.SetActive(true);
     }
 
@@ -57,15 +67,25 @@ public class MainMenuManager : MonoBehaviour
 
     public void ExitNo()
     {
-        exitPanel.SetActive(false);
+        HideAllPanels();
+        mainPanel.SetActive(true);
     }
 
     // ---------- FREE MODE ----------
-    public void PlayFreeMode()
+    public void OpenFreeModeEnvironments()
     {
-        Time.timeScale = 1f;
-        AudioListener.pause = false;
-        SceneManager.LoadScene(1);
+        HideAllPanels();
+        freeModeEnvPanel.SetActive(true);
+    }
+
+    public void LoadDesertMode()
+    {
+        StartCoroutine(ShowInstructionAndLoad(desertSceneIndex));
+    }
+
+    public void LoadForestMode()
+    {
+        StartCoroutine(ShowInstructionAndLoad(forestSceneIndex));
     }
 
     // ---------- MISSION MODE ----------
@@ -73,7 +93,20 @@ public class MainMenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
+    }
+
+    // ---------- INSTRUCTION + LOAD ----------
+    IEnumerator ShowInstructionAndLoad(int sceneIndex)
+    {
+        HideAllPanels();
+        instructionPanel.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        SceneManager.LoadScene(sceneIndex);
     }
 
     // ---------- UTIL ----------
@@ -83,5 +116,7 @@ public class MainMenuManager : MonoBehaviour
         modePanel.SetActive(false);
         settingsPanel.SetActive(false);
         exitPanel.SetActive(false);
+        freeModeEnvPanel.SetActive(false);
+        instructionPanel.SetActive(false);
     }
 }
