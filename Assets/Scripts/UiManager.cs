@@ -84,8 +84,8 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
     }
 
     // ================= MISSION COMPLETE =================
@@ -94,8 +94,8 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 0f;
         missionCompletePanel.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
     }
 
     // ================= BUTTONS =================
