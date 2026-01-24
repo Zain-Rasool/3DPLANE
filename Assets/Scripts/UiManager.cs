@@ -25,6 +25,7 @@ public class UiManager : MonoBehaviour
         missionCompletePanel.SetActive(false);
 
         Time.timeScale = 1f;
+        //AudioListener.pause = false;
     }
 
     private void Update()
@@ -44,6 +45,7 @@ public class UiManager : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f; // IMPORTANT: resume time
+        AudioListener.pause = false;
         SceneManager.LoadScene(0); // Main Menu scene
     }
 

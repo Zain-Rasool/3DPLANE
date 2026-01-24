@@ -6,7 +6,7 @@ public class ButtonSoundClick : MonoBehaviour
 
     public void PlayClick()
     {
-        if (PlayerPrefs.GetInt("Sound", 1) == 1)
+        if (PlayerPrefs.GetInt("ButtonSound", 1) == 1)
         {
             clickSound.Play();
         }

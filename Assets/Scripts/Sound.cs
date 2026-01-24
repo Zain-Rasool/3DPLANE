@@ -1,9 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Sound : MonoBehaviour
 {
+    public static Sound instance;
     public AudioSource musicSource;
 
     public GameObject musicOnIcon;
@@ -11,49 +12,87 @@ public class Sound : MonoBehaviour
 
     void Awake()
     {
-        //SceneManager.sceneLoaded += OnSceneLoaded; // Scene load event
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
-    void OnDestroy()
+    void OnEnable()
     {
-        //SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void Start()
+    {
+        ApplyMusicState();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        int musicState = PlayerPrefs.GetInt("Music", 1);
-        musicSource.mute = musicState == 0;
+        // Sirf MainMenu scene me icons assign karo
+        if (scene.name == "MainMenu")
+        {
+            musicOnIcon = GameObject.Find("MusicOnIcon"); // GameObject ka exact name
+            musicOffIcon = GameObject.Find("MusicOffIcon");
+        }
+        else
+        {
+            musicOnIcon = null;
+            musicOffIcon = null;
+        }
 
-        if (!musicSource.isPlaying && musicState == 1)
-            musicSource.Play();
-
-        UpdateIcon();
+        ApplyMusicState(); // music aur icon update
     }
 
     public void MusicOn()
     {
         PlayerPrefs.SetInt("Music", 1);
-        musicSource.mute = false;
-
-        if (!musicSource.isPlaying)
-            musicSource.Play();
-
-        UpdateIcon();
+        ApplyMusicState();
     }
 
     public void MusicOff()
     {
         PlayerPrefs.SetInt("Music", 0);
-        musicSource.mute = true;
+        ApplyMusicState();
+    }
 
-        if (musicSource.isPlaying)
+    void ApplyMusicState()
+    {
+        int musicState = PlayerPrefs.GetInt("Music", 1);
+
+        if (musicState == 1)
+        {
+            musicSource.mute = false;
+            if (!musicSource.isPlaying)
+                musicSource.Play();
+        }
+        else
+        {
+            musicSource.mute = true;
             musicSource.Stop();
+        }
 
         UpdateIcon();
     }
 
     void UpdateIcon()
     {
+        // sirf tab update karo agar icons exist karte hain
+        if (musicOnIcon == null || musicOffIcon == null)
+            return;
+
         bool isOn = PlayerPrefs.GetInt("Music", 1) == 1;
 
         musicOnIcon.SetActive(isOn);

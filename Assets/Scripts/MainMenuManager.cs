@@ -44,6 +44,7 @@ public class MainMenuManager : MonoBehaviour
     public void OpenSettings()
     {
         HideAllPanels();
+
         settingsPanel.SetActive(true);
     }
 

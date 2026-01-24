@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 257467481}
   - component: {fileID: 257467480}
   m_Layer: 5
-  m_Name: Off
+  m_Name: MusicOffIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004126142}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb093b7aa254e5e4abc34e21d63028c3, type: 3}
   m_Name: 
@@ -2580,7 +2580,7 @@ GameObject:
   - component: {fileID: 1039458268}
   - component: {fileID: 1039458267}
   m_Layer: 5
-  m_Name: On
+  m_Name: MusicOnIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4464,7 +4464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767120959}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 807cd98b3b9e3894fb9a83d93aa1871c, type: 3}
   m_Name: 
@@ -4499,7 +4499,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: abafa2771e21c874b824a5c65350d48f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
