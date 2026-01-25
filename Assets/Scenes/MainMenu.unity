@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 257467480}
   m_Layer: 5
   m_Name: MusicOffIcon
-  m_TagString: Untagged
+  m_TagString: MusicOff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,11 +371,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1772623753}
+  m_Father: {fileID: 702796282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 149.99995, y: 17.999985}
   m_SizeDelta: {x: 58.792, y: 48.369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &257467480
@@ -422,8 +422,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1767120960}
-        m_TargetAssemblyTypeName: Sound, Assembly-CSharp
+      - m_Target: {fileID: 702796285}
+        m_TargetAssemblyTypeName: MusicIconUi, Assembly-CSharp
         m_MethodName: MusicOn
         m_Mode: 1
         m_Arguments:
@@ -1599,6 +1599,7 @@ GameObject:
   - component: {fileID: 702796282}
   - component: {fileID: 702796284}
   - component: {fileID: 702796283}
+  - component: {fileID: 702796285}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1618,7 +1619,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1772623753}
+  - {fileID: 1039458266}
+  - {fileID: 257467479}
   - {fileID: 1094737252}
   m_Father: {fileID: 217749401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1665,6 +1667,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702796281}
   m_CullTransparentMesh: 1
+--- !u!114 &702796285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702796281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb02aa5e42c0354e9ef00e0953f0583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicIconUi
+  musicOnIcon: {fileID: 1039458265}
+  musicOffIcon: {fileID: 257467478}
 --- !u!1 &707309745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2597,7 @@ GameObject:
   - component: {fileID: 1039458267}
   m_Layer: 5
   m_Name: MusicOnIcon
-  m_TagString: Untagged
+  m_TagString: MusicOn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2598,11 +2614,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1772623753}
+  m_Father: {fileID: 702796282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: -0.0000053644}
+  m_AnchoredPosition: {x: 73.6, y: 17.999979}
   m_SizeDelta: {x: 64.534, y: 48.369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039458267
@@ -2649,8 +2665,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1767120960}
-        m_TargetAssemblyTypeName: Sound, Assembly-CSharp
+      - m_Target: {fileID: 702796285}
+        m_TargetAssemblyTypeName: MusicIconUi, Assembly-CSharp
         m_MethodName: MusicOff
         m_Mode: 1
         m_Arguments:
@@ -3091,7 +3107,7 @@ GameObject:
   - component: {fileID: 1216712588}
   m_Layer: 5
   m_Name: Off
-  m_TagString: Untagged
+  m_TagString: MusicOff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4373,7 +4389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1766146756
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4470,8 +4486,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sound
   musicSource: {fileID: 1767120962}
-  musicOnIcon: {fileID: 1039458265}
-  musicOffIcon: {fileID: 257467478}
 --- !u!4 &1767120961
 Transform:
   m_ObjectHideFlags: 0
@@ -4584,83 +4598,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1772623752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1772623753}
-  - component: {fileID: 1772623755}
-  - component: {fileID: 1772623754}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1772623753
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772623752}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1039458266}
-  - {fileID: 257467479}
-  m_Father: {fileID: 702796282}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 18}
-  m_SizeDelta: {x: 99, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1772623754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772623752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1772623755
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772623752}
-  m_CullTransparentMesh: 1
 --- !u!1 &1807265757
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -6,9 +7,6 @@ public class Sound : MonoBehaviour
 {
     public static Sound instance;
     public AudioSource musicSource;
-
-    public GameObject musicOnIcon;
-    public GameObject musicOffIcon;
 
     void Awake()
     {
@@ -24,36 +22,9 @@ public class Sound : MonoBehaviour
         }
     }
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
     void Start()
     {
         ApplyMusicState();
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Sirf MainMenu scene me icons assign karo
-        if (scene.name == "MainMenu")
-        {
-            musicOnIcon = GameObject.Find("MusicOnIcon"); // GameObject ka exact name
-            musicOffIcon = GameObject.Find("MusicOffIcon");
-        }
-        else
-        {
-            musicOnIcon = null;
-            musicOffIcon = null;
-        }
-
-        ApplyMusicState(); // music aur icon update
     }
 
     public void MusicOn()
@@ -68,11 +39,14 @@ public class Sound : MonoBehaviour
         ApplyMusicState();
     }
 
+    public bool IsMusicOn()
+    {
+        return PlayerPrefs.GetInt("Music", 1) == 1;
+    }
+
     void ApplyMusicState()
     {
-        int musicState = PlayerPrefs.GetInt("Music", 1);
-
-        if (musicState == 1)
+        if (IsMusicOn())
         {
             musicSource.mute = false;
             if (!musicSource.isPlaying)
@@ -83,19 +57,5 @@ public class Sound : MonoBehaviour
             musicSource.mute = true;
             musicSource.Stop();
         }
-
-        UpdateIcon();
-    }
-
-    void UpdateIcon()
-    {
-        // sirf tab update karo agar icons exist karte hain
-        if (musicOnIcon == null || musicOffIcon == null)
-            return;
-
-        bool isOn = PlayerPrefs.GetInt("Music", 1) == 1;
-
-        musicOnIcon.SetActive(isOn);
-        musicOffIcon.SetActive(!isOn);
     }
 }
