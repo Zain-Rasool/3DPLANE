@@ -10,11 +10,12 @@ public class MainMenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject exitPanel;
     public GameObject freeModeEnvPanel;
+    public GameObject missionModePanel;
     public GameObject instructionPanel;
 
     [Header("Free Mode Scenes")]
     public int desertSceneIndex = 1;
-    public int forestSceneIndex = 2;
+    public int iceSceneIndex = 2;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class MainMenuManager : MonoBehaviour
         exitPanel.SetActive(false);
         freeModeEnvPanel.SetActive(false);
         instructionPanel.SetActive(false);
+        missionModePanel.SetActive(false);
     }
 
     // ---------- PLAY ----------
@@ -86,9 +88,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadForestMode()
     {
-        StartCoroutine(ShowInstructionAndLoad(forestSceneIndex));
+        StartCoroutine(ShowInstructionAndLoad(iceSceneIndex));
     }
 
+    public void OpenMissionModePanel()
+    {
+        HideAllPanels();
+        missionModePanel.SetActive(true);
+    }
     // ---------- MISSION MODE ----------
     public void PlayMissionMode()
     {
