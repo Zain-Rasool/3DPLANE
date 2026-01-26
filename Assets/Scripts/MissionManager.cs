@@ -44,7 +44,7 @@ public class MissionManager : MonoBehaviour
         
         
 
-        if (missionCompleted) return; // comment karo debugging ke liye agar log nahi aa rahe
+        if (missionCompleted) return; 
 
         // Landing check
         if (runways[currentLevel].AirplaneLandingCompleted())

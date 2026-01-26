@@ -28,21 +28,21 @@ public class MainMenuManager : MonoBehaviour
         missionModePanel.SetActive(false);
     }
 
-    // ---------- PLAY ----------
+    // PLAY
     public void PlayButton()
     {
         HideAllPanels();
         modePanel.SetActive(true);
     }
 
-    // ---------- BACK ----------
+    // BACK
     public void BackButton()
     {
         HideAllPanels();
         mainPanel.SetActive(true);
     }
 
-    // ---------- SETTINGS ----------
+    // SETTINGS
     public void OpenSettings()
     {
         HideAllPanels();
@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour
         mainPanel.SetActive(true);
     }
 
-    // ---------- EXIT ----------
+    // EXIT
     public void OpenExitPanel()
     {
         HideAllPanels();
@@ -74,7 +74,7 @@ public class MainMenuManager : MonoBehaviour
         mainPanel.SetActive(true);
     }
 
-    // ---------- FREE MODE ----------
+    // FREE MODE
     public void OpenFreeModeEnvironments()
     {
         HideAllPanels();
@@ -96,7 +96,7 @@ public class MainMenuManager : MonoBehaviour
         HideAllPanels();
         missionModePanel.SetActive(true);
     }
-    // ---------- MISSION MODE ----------
+    // MISSION MODE 
     public void PlayMissionMode()
     {
         Time.timeScale = 1f;
@@ -104,7 +104,7 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    // ---------- INSTRUCTION + LOAD ----------
+    // INSTRUCTION
     IEnumerator ShowInstructionAndLoad(int sceneIndex)
     {
         HideAllPanels();
@@ -117,7 +117,7 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
-    // ---------- UTIL ----------
+    
     void HideAllPanels()
     {
         mainPanel.SetActive(false);
@@ -126,5 +126,6 @@ public class MainMenuManager : MonoBehaviour
         exitPanel.SetActive(false);
         freeModeEnvPanel.SetActive(false);
         instructionPanel.SetActive(false);
+        missionModePanel.SetActive(false);
     }
 }

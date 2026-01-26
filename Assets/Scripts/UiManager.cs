@@ -44,18 +44,17 @@ public class UiManager : MonoBehaviour
     }
     public void GoToMainMenu()
     {
-        Time.timeScale = 1f; // IMPORTANT: resume time
+        Time.timeScale = 1f;
         AudioListener.pause = false;
         SceneManager.LoadScene(0); // Main Menu scene
     }
 
 
-    // ================= PAUSE =================
+    // PAUSE
     public void PauseGame()
     {
         Debug.Log("GAME PAUSED");
 
-        //isPaused = true;
 
         AudioListener.pause = true;
 
@@ -64,7 +63,7 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    // ================= RESUME =================
+    // RESUME
     public void ResumeGame()
     {
         
@@ -80,7 +79,7 @@ public class UiManager : MonoBehaviour
         //Cursor.visible = false;
     }
 
-    // ================= GAME OVER =================
+    // ==GAME OVER
     public void ShowGameOver()
     {
         Time.timeScale = 0f;
@@ -90,7 +89,7 @@ public class UiManager : MonoBehaviour
         //Cursor.visible = true;
     }
 
-    // ================= MISSION COMPLETE =================
+    // MISSION COMPLETE
     public void ShowMissionComplete()
     {
         Time.timeScale = 0f;
@@ -100,7 +99,7 @@ public class UiManager : MonoBehaviour
         //Cursor.visible = true;
     }
 
-    // ================= BUTTONS =================
+    // BUTTONS
     public void RestartGame()
     {
 

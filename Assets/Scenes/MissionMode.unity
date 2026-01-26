@@ -441,6 +441,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac2cbe44320dc1e4a8bc3eaa98e3e65a, type: 3}
+--- !u!114 &383748838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2219171639791559485, guid: ac2cbe44320dc1e4a8bc3eaa98e3e65a, type: 3}
+  m_PrefabInstance: {fileID: 383748837}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfdd5b211652cb418aa1d01956efde1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405393416
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +735,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac2cbe44320dc1e4a8bc3eaa98e3e65a, type: 3}
+--- !u!114 &417003331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2219171639791559485, guid: ac2cbe44320dc1e4a8bc3eaa98e3e65a, type: 3}
+  m_PrefabInstance: {fileID: 417003330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfdd5b211652cb418aa1d01956efde1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &528396051
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +840,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1376902637}
         m_TargetAssemblyTypeName: ButtonSoundClick, Assembly-CSharp
         m_MethodName: PlayClick
         m_Mode: 1
@@ -2530,7 +2552,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1376902637}
         m_TargetAssemblyTypeName: ButtonSoundClick, Assembly-CSharp
         m_MethodName: PlayClick
         m_Mode: 1
@@ -2674,7 +2696,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1376902637}
         m_TargetAssemblyTypeName: ButtonSoundClick, Assembly-CSharp
         m_MethodName: PlayClick
         m_Mode: 1
@@ -2818,7 +2840,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1376902637}
         m_TargetAssemblyTypeName: ButtonSoundClick, Assembly-CSharp
         m_MethodName: PlayClick
         m_Mode: 1
@@ -3425,8 +3447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MissionManager
   runways:
   - {fileID: 1887995892}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 417003331}
+  - {fileID: 383748838}
   airplaneCamera: {fileID: 1582710527}
 --- !u!114 &1887995892 stripped
 MonoBehaviour:

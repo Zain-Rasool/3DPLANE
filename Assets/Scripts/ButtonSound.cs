@@ -12,7 +12,7 @@ public class ButtonSound : MonoBehaviour
         UpdateIcon();
     }
 
-    // BUTTON CLICK SOUND (use this on ALL buttons)
+    // BUTTON CLICK SOUND 
     public void PlayButtonSound()
     {
         if (PlayerPrefs.GetInt("ButtonSound", 1) == 1)
